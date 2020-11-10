@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Result sheet</title>
+</head>
+<body>
+
+    <div class="content_wrapper"  style="display: flex;">
+        <div id="form_section">
+          <form action="" name="form1" style="">
+              <fieldset>
+                  <legend>Student Information</legend>
+
+                  <label for="">Your Name</label>
+                  <input type="text" id="username" name="username">
+                  <label for="" class="lab">Father Name</label>
+                  <input type="text" id="fname" name="fname">
+                  <br>
+                  <label for="">Institute Name</label>
+                  <input type="text" id="instname" name="isntname">
+                  <label for="" class="lab">Passing Year </label>
+                  <input type="text"id="passyear" name="passyear">
+              </fieldset>
+
+              <fieldset id="scnd">
+                <legend> Your Subject Marks</legend>
+
+                <label for="">Bangla</label>
+                <input type="text" maxlength="2" name="bangla" id="bangla">
+                <label for="">English</label>
+                <input type="text"  maxlength="2" name="english" id="english">
+                <label for="">Math</label>
+                <input type="text"  maxlength="2"  name="math" id="math">
+                <label for="">ICT </label>
+                <input type="text"  maxlength="2"  name="ict" id="ict">
+            </fieldset>
+          </form>
+          <div class="btn_section">
+            <button type="reset" id="reset_btn">Reset</button>
+             <button type="submit" id="submit_btn" onclick="myFunc()">Result</button>
+        </div>
+        </div>
+    
+        <div id="result_section">
+            <table border="1" style="border-collapse: collapse;">
+                <tr>
+                    <th colspan="2">Student Information</th>
+                </tr
+                <tr>
+                    <td>Your Name</td>
+                    <td id="user_name"></td>
+                </tr>
+                <tr>
+                    <td>Your Father Name</td>
+                    <td id="f_name"></td>
+                </tr>
+
+                <tr>
+                    <td>Your Institute Name</td>
+                    <td id="inst_name"></td>
+                </tr>
+                <tr>
+                    <td>Passing Year</td>
+                    <td id="pass_year"></td>
+                </tr>
+                <tr>
+                    <th colspan="2">Subject Marks</th>
+                </tr>
+                <tr>
+                    <td>Bangla</td>
+                    <td id="sub_bangla"></td>
+                </tr>
+                <tr>
+                    <td>English</td>
+                    <td id="sub_english"></td>
+                </tr>
+                <tr>
+                    <td>Math</td>
+                    <td id="sub_math"></td>
+                </tr>
+                <tr>
+                    <td>ICT</td>
+                    <td id="sub_ict"></td>
+                </tr>
+                <tr>
+                    <th colspan="2">Marks Result</th>
+                </tr>
+                <tr>
+                    <td>Total Number</td>
+                    <td id="ttl_number"></td>
+                </tr>
+                <tr>
+                    <td>Percentage</td>
+                    <td id="parsentage"></td>
+                </tr>
+                <tr>
+                    <td>Grade</td>
+                    <td id="grade"></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+    
+
+<script type="text/javascript">
+    function myFunc(){
+
+        //student Information
+        a =  document.form1.username.value;
+        document.getElementById("user_name").innerHTML= a;
+
+        b =  document.form1.fname.value;
+        document.getElementById("f_name").innerHTML= b;
+
+        c =  document.form1.instname.value;
+        document.getElementById("inst_name").innerHTML= c;
+        
+        d =  document.form1.passyear.value;
+        document.getElementById("pass_year").innerHTML= d;
+
+        //subject marks
+
+        e =  document.form1.bangla.value;
+        document.getElementById("sub_bangla").innerHTML= e;
+
+        f =  document.form1.english.value;
+        document.getElementById("sub_english").innerHTML= f;
+
+        g =  document.form1.math.value;
+        document.getElementById("sub_math").innerHTML= g;
+
+        h =  document.form1.ict.value;
+        document.getElementById("sub_ict").innerHTML= h;
+        
+        //
+        var totalMarks = parseFloat(e) + parseFloat(f) + parseFloat(g)+ parseFloat(h);
+        document.getElementById("ttl_number").innerHTML= totalMarks;
+
+        
+        var percentage = totalMarks *100/400;
+
+        document.getElementById("parsentage").innerHTML= percentage.toFixed(2) + " %";
+
+        switch(true)
+    {
+    case(percentage>=80):
+    document.getElementById("grade").innerHTML="A+";
+    break;
+    case(percentage>=70):
+    document.getElementById("grade").innerHTML="A";
+    break;
+    case(percentage>=60):
+    document.getElementById("grade").innerHTML="B";
+    break;
+    case(percentage>=50):
+    document.getElementById("grade").innerHTML="C";
+    break;
+    case(percentage>=40):
+    document.getElementById("grade").innerHTML="D";
+    break;
+    case(percentage<33):
+    document.getElementById("grade").innerHTML="Fail";
+    break;
+    }
+    }
+</script>
+</body>
+</html>
